@@ -1,0 +1,23 @@
+use("db_formulario");
+db.createCollection("usuario",{
+    validator:{
+        $jsonSchema:{
+            bsonType:"object",
+            additionalProperties:true,
+            required:["correo","contraseña"],
+            properties:{
+                correo:{
+                    bsonType:"string"
+                },
+                contraseña:{
+                    bsonType:"string"
+                }
+            }
+        }
+    }
+})
+
+db.usuario.insertOne({
+    correo:"Juan@gmail.com",
+    contraseña:"1234"
+})
