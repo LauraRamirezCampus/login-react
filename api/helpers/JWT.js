@@ -10,8 +10,8 @@ const conexionDB = await con();
      if (Object.keys(req.body).length === 0) return res.status(400).send({ message: "Data not sent" });
      try {
          const result = await conexionDB.collection("usuario").findOne(req.body);
-         if(!result)return res.status(403).send({ status: 403, message: "usuario no encontrado" });
          console.log(result);
+         if(!result)return res.status(403).send({ status: 403, message: "usuario no encontrado" });
          const {_id,correo,contraseña}=result
          const encoder = new TextEncoder();
          const jwtconstructor = await new SignJWT({ _id: _id,correo:correo,contraseña:contraseña});

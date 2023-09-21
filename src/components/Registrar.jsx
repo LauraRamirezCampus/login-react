@@ -15,6 +15,7 @@ export function Registrar() {
         body: JSON.stringify(data)
       };
       let res = await fetch("http://127.10.10.9:5112/registrar", requestOptions);
+      alert("usuario registrado")
       console.log("w");
       console.log(res);
       const jsonres = await res.json()
